@@ -17,9 +17,28 @@ function createRestaurant(name) {
       dinner: [],
     }
   }
+  return restaurant
+}
+
+function addMenuItem(name, itemName) {
+// 1. basedon the type add it to the array in the restauarnt
+  var mealType = itemName.type
+  if (mealType = 'lunch') {
+    name.menus.lunch.push(itemName)
+  } else if (mealType = 'breakfast') {
+    name.menus.breakfast.push(itemName)
+  } else if (mealType = 'dinner') {
+    name.menus.dinner.push(itemName)
+  }
+// you need to push it to name.menus.(itemName.type)
+// declare a variable and set it equal to itemName.type
+// if it's equal then you push to x
+//name.push(itemName)
+
+
 }
 module.exports = {
   createRestaurant,
-  // addMenuItem,
+  addMenuItem,
   // removeMenuItem
 }
