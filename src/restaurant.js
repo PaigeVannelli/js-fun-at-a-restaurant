@@ -20,25 +20,31 @@ function createRestaurant(name) {
   return restaurant
 }
 
-function addMenuItem(name, itemName) {
-// 1. basedon the type add it to the array in the restauarnt
+function addMenuItem(restaurant, itemName) {
   var mealType = itemName.type
-  if (mealType = 'lunch') {
-    name.menus.lunch.push(itemName)
-  } else if (mealType = 'breakfast') {
-    name.menus.breakfast.push(itemName)
-  } else if (mealType = 'dinner') {
-    name.menus.dinner.push(itemName)
+  if (mealType === 'lunch' && !restaurant.menus.lunch.includes(itemName)) {
+    restaurant.menus.lunch.push(itemName)
+  } else if (mealType === 'breakfast' && !restaurant.menus.breakfast.includes(itemName)) {
+    restaurant.menus.breakfast.push(itemName)
+  } else if (mealType === 'dinner' && !restaurant.menus.dinner.includes(itemName)) {
+    restaurant.menus.dinner.push(itemName)
   }
-// you need to push it to name.menus.(itemName.type)
-// declare a variable and set it equal to itemName.type
-// if it's equal then you push to x
-//name.push(itemName)
-
-
 }
+
+function removeMenuItem(restaurant, foodName, type) {
+  if (type === 'breakfast') {
+    for (i = 0; i < restaurant.menus.breakfast.length; i++) {
+      if (restaurant.menus.breakfast[i].name === foodName) {
+        restaurant.menus.breakfast.splice(i, 1)
+        return 'No one is eating our ' + foodName + ' - it has been removed from the ' + type + ' menu!'
+      }
+    }
+  }
+}
+
+
 module.exports = {
   createRestaurant,
   addMenuItem,
-  // removeMenuItem
+  removeMenuItem
 }
