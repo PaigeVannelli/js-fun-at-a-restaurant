@@ -31,15 +31,25 @@ function addMenuItem(restaurant, itemName) {
   }
 }
 
+// function removeMenuItem(restaurant, foodName, type) {
+//   if (type === 'breakfast') {
+//     for (i = 0; i < restaurant.menus.breakfast.length; i++) {
+//       if (restaurant.menus.breakfast[i].name === foodName) {
+//         restaurant.menus.breakfast.splice(i, 1)
+//         return 'No one is eating our ' + foodName + ' - it has been removed from the ' + type + ' menu!'
+//       }
+//     }
+//   }
+// }
+
 function removeMenuItem(restaurant, foodName, type) {
-  if (type === 'breakfast') {
-    for (i = 0; i < restaurant.menus.breakfast.length; i++) {
-      if (restaurant.menus.breakfast[i].name === foodName) {
-        restaurant.menus.breakfast.splice(i, 1)
+    for (i = 0; i < restaurant.menus[type].length; i++) {
+      if (restaurant.menus[type][i].name === foodName) {
+        restaurant.menus[type].splice(i, 1)
         return 'No one is eating our ' + foodName + ' - it has been removed from the ' + type + ' menu!'
       }
     }
-  }
+    return `Sorry, we don't sell ${foodName}, try adding a new recipe!`
 }
 
 
